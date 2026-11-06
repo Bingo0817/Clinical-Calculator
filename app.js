@@ -7,14 +7,20 @@ for(const id of ['bsa','renal']){
  function run(withDose){clear();try{out.textContent=compute();if(withDose)total.textContent=Calculators.dose(out.textContent,val(id==='bsa'?'rate':'auc'),id==='bsa'?0:25);}catch(e){error.textContent=e.message;}}
  form.addEventListener('submit',e=>{e.preventDefault();run(false);});
  document.getElementById(id+'-dose').addEventListener('click',()=>run(true));
- form.addEventListener('input',clear);form.addEventListener('change',e=>{clear();if(e.target.name==='unit'){form.elements.scr.value='';error.textContent='单位已切换，请重新填写对应单位的血肌酐值。';}});form.addEventListener('reset',clear);
+ const invalidate=e=>{if(e.target.name==='rate'||e.target.name==='auc'){total.textContent='';error.textContent='';}else{clear();}};
+ form.addEventListener('input',invalidate);form.addEventListener('change',e=>{invalidate(e);if(e.target.name==='sex'){const selectedSex=e.target.value;form.reset();form.elements.sex.value=selectedSex;return;}if(e.target.name==='unit'){form.elements.scr.value='';}});form.addEventListener('reset',clear);
 }
 
 const renalForm=document.getElementById('renal-form');
 
-// Hash links support direct entry and browser back/forward without losing form values.
+// Reset both forms whenever navigation changes the active calculator.
+let activeCalculator=null;
 function showCalculator(){
  const active=location.hash==='#renal'?'renal':'bsa';
+ if(activeCalculator!==null && activeCalculator!==active){
+  for(const id of ['bsa','renal'])document.getElementById(id+'-form').reset();
+ }
+ activeCalculator=active;
  for(const id of ['bsa','renal']){
   document.getElementById(id).hidden=id!==active;
   const link=document.getElementById('nav-'+id);

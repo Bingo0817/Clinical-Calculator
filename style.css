@@ -59,3 +59,41 @@ label.auc-inline{display:flex;align-items:center;gap:12px;white-space:nowrap}lab
 .input-with-unit .input-unit{padding:0;color:#6e6e73}
 .input-with-unit .unit-select{border:0;border-radius:0;background:transparent;flex:0 0 94px;width:94px;padding:8px 0;font-size:13px}
 @media(max-width:600px){.input-with-unit{gap:6px}.input-with-unit .input-unit{padding:0}.input-with-unit .unit-select{flex-basis:86px;width:86px;font-size:12px}}
+
+/* Consistent form columns: centered label | equal-sized control | external unit. */
+section{--label-width:156px;--unit-width:88px;--field-height:46px;--row-gap:8px}
+form{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+form>.grid,form>.stacked-fields{display:flex;flex-direction:column;gap:10px}
+label.field-row,.stacked-fields label.field-row{display:grid;grid-template-columns:var(--label-width) minmax(0,1fr);align-items:center;gap:var(--row-gap);margin:0;white-space:normal}
+.field-name{display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.4;font-size:14px;min-width:0}
+.field-row>.input-with-unit{display:grid;grid-template-columns:minmax(0,1fr) var(--unit-width);align-items:center;gap:var(--row-gap);margin:0;width:100%;min-width:0}
+.field-row .input-with-unit input,.field-row .input-with-unit select{width:100%;height:var(--field-height);min-height:var(--field-height);padding:8px;margin:0;font-size:16px;box-sizing:border-box}
+.field-row .input-unit{text-align:left;font-size:13px;padding:0;white-space:nowrap}
+.field-row .input-with-unit .unit-select{width:100%;padding:4px 0;font-size:13px}
+.gender-row{display:grid;grid-template-columns:var(--label-width) minmax(0,1fr) var(--unit-width);gap:var(--row-gap);align-items:center}
+.gender-row .segmented{margin:0;height:var(--field-height);padding:3px;gap:2px;min-width:0}
+.gender-row .segmented label{margin:0;min-width:0}
+.gender-row .segmented span{min-height:0;height:40px;font-size:14px;white-space:nowrap}
+.calculation-row{display:grid;grid-template-columns:58px 90px minmax(0,1fr);gap:var(--row-gap);margin:0;align-items:center}
+.calculation-label{text-align:center;display:flex;align-items:center;justify-content:center;font-size:14px}
+.calculation-row>button{height:var(--field-height);min-height:var(--field-height);font-size:13px;padding:6px 2px}
+.calculation-row>.result{height:var(--field-height);padding:0;min-height:0}
+.calculation-row .result-value{display:grid;grid-template-columns:minmax(0,1fr) var(--unit-width);gap:var(--row-gap);height:100%;width:100%;align-items:center}
+.calculation-row .result-value strong{width:100%;height:var(--field-height);min-height:var(--field-height);padding:8px 4px;font-size:20px}
+.calculation-row .result-unit{font-size:13px;text-align:left}
+form>.reset{margin:0}
+@media(max-width:600px){
+ section{--label-width:104px;--unit-width:70px;--field-height:44px;--row-gap:6px;padding:12px}
+ .field-name,.calculation-label{font-size:12px}
+ .gender-row{grid-template-columns:var(--label-width) minmax(0,1fr)}
+ .gender-row .segmented{height:44px}.gender-row .segmented span{height:38px;font-size:13px}
+ .calculation-row{grid-template-columns:44px 54px minmax(0,1fr)}
+ .field-row .input-unit,.field-row .input-with-unit .unit-select,.calculation-row .result-unit{font-size:11px}
+ .field-row input::placeholder{font-size:12px}
+ .calculation-row .result-value strong{font-size:18px}
+}
+
+.field-row .input-with-unit input,.field-row .input-with-unit select:not(.unit-select){text-align:center;text-align-last:center}
+.field-row input[type=number]{appearance:textfield;-moz-appearance:textfield}
+.field-row input[type=number]::-webkit-inner-spin-button,.field-row input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.calculation-row .result-value strong{text-align:center;justify-content:center}
