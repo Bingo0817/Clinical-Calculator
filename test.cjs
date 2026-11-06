@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const c=require('./calculators.js');
+assert.equal(c.bsa(170,65,'male'),'1.79');
+assert.equal(c.bsa(170,65,'female'),'1.77');
+assert.equal(c.dose(c.bsa(170,65,'male'),100),'179');
+assert.equal(c.crcl(60,65,88.4,'umol','male'),'72');
+assert.equal(c.crcl(60,65,1,'mg','male'),'72');
+assert.equal(c.crcl(60,65,1,'mg','female'),'61');
+assert.equal(c.dose(c.crcl(60,65,1,'mg','male'),5,25),'485');
+for(const x of ['',0,-1,'abc',Infinity])assert.throws(()=>c.bsa(x,65,'male'));
+for(const age of [0,17,140,150])assert.throws(()=>c.crcl(age,65,1,'mg','male'));
+assert.throws(()=>c.crcl(60,65,0,'mg','male'));
+assert.throws(()=>c.bsa(1,1,'male'));
+assert.throws(()=>c.dose(0,5,25));
+console.log('PASS: formulas, sex factors, unit equivalence, intermediate rounding and invalid input checks');
