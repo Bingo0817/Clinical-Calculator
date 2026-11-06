@@ -97,3 +97,21 @@ form>.reset{margin:0}
 .field-row input[type=number]{appearance:textfield;-moz-appearance:textfield}
 .field-row input[type=number]::-webkit-inner-spin-button,.field-row input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 .calculation-row .result-value strong{text-align:center;justify-content:center}
+
+header,header h1{text-align:center}
+
+/* Reserve enough label space for full names without line breaks. */
+.field-name,.calculation-label{white-space:nowrap}
+@media(max-width:600px){
+ section{--label-width:132px;--row-gap:4px}
+ .calculation-row{grid-template-columns:44px 84px minmax(0,1fr)}
+ .field-name{font-size:12px}
+ .calculation-label{font-size:12px}
+}
+@media(max-width:350px){
+ main{padding-left:8px;padding-right:8px}
+ section{padding-left:8px;padding-right:8px;--label-width:121px;--unit-width:64px}
+ .field-name{font-size:11px}
+ .calculation-row{grid-template-columns:44px 73px minmax(0,1fr)}
+ .field-row .input-with-unit input,.field-row .input-with-unit select{padding-left:4px;padding-right:4px}
+}
