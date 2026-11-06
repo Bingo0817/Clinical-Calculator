@@ -11,8 +11,6 @@ for(const id of ['bsa','renal']){
 }
 
 const renalForm=document.getElementById('renal-form');
-renalForm.elements.unit.addEventListener('change',()=>{document.getElementById('scr-unit').textContent=renalForm.elements.unit.value==='umol'?'μmol/L':'mg/dL';});
-renalForm.addEventListener('reset',()=>{document.getElementById('scr-unit').textContent='μmol/L';});
 
 // Hash links support direct entry and browser back/forward without losing form values.
 function showCalculator(){

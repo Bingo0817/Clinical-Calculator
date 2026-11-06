@@ -7,3 +7,29 @@
 [hidden]{display:none!important}nav a{display:flex;align-items:center;justify-content:center;line-height:1.6;padding:14px 12px}nav a[aria-current="page"]{background:#0071e3;color:#fff;border-color:#0071e3}nav a:active{opacity:.8}
 
 aside{text-align:center}
+/* Compact mobile layout: keep controls usable without fixed-height clipping. */
+.input-with-unit .unit-select{flex:0 0 112px;width:112px;padding:10px 6px;font-size:14px;border-left:1px solid #e8e8ed}
+@media(max-width:600px){
+ main{padding:10px 12px calc(12px + env(safe-area-inset-bottom))}
+ header{padding:4px 0 10px;text-align:center}h1{font-size:24px;margin:0;letter-spacing:-.5px}
+ aside{padding:8px 12px;border-radius:12px;font-size:11px;line-height:1.5}
+ nav{margin:10px 0;gap:8px}nav a{padding:8px;min-height:48px;font-size:12px;line-height:1.4;border-radius:12px}
+ section{padding:14px;margin-bottom:0;border-radius:18px;scroll-margin-top:8px}
+ section h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+ form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 10px;align-items:center}
+ form>fieldset,form>.grid,form>.stacked-fields,form>label,form>.error,form>.reset{grid-column:1/-1}
+ fieldset{margin:0}legend{font-size:13px;margin-bottom:5px}
+ .segmented{padding:3px;border-radius:10px}.segmented span{min-height:38px;font-size:14px}
+ label{font-size:13px;margin:0}.grid{gap:10px}
+ .stacked-fields{display:grid;gap:8px}.stacked-fields label{display:flex;align-items:center;gap:12px}.stacked-fields .input-with-unit{flex:1;margin:0}
+ .input-with-unit{margin-top:4px;border-radius:10px}
+ input,select{min-height:42px;padding:9px 10px;font-size:16px}
+ .input-unit{font-size:12px;padding-right:10px}input::placeholder{font-size:13px}
+ form>button{margin:0;min-height:52px;padding:10px 6px;font-size:13px;border-radius:10px}
+ .result{margin:0;padding:7px 10px;min-height:52px;border-radius:10px}
+ .result-label{font-size:11px;margin-bottom:1px}.result .result-value strong{font-size:24px;line-height:1.2}
+ .result-unit{font-size:12px}.result-value{gap:4px}
+ form>.reset{min-height:36px;padding:6px;font-size:12px}
+ details{margin-top:10px;padding-top:8px;font-size:12px}summary{min-height:28px}
+ .error{margin:0;font-size:12px}
+}
