@@ -1,7 +1,5 @@
 # 化疗计算器 H5
 
-苹果风格移动端页面。点击顶部导航切换计算分页，每次仅显示一项；支持带 #bsa / #renal 的直达链接和浏览器前进后退，切换时清空两页数据并恢复默认选项。男女采用点击分段选择，体表面积仅提供成人公式。纯 HTML/CSS/JavaScript，无依赖，无后台，不保存或上传输入。
-
 ## 公式来源与计算方式
 
 H 为身高 cm，W 为体重 kg，BSA 单位 m²。
@@ -13,12 +11,6 @@ H 为身高 cm，W 为体重 kg，BSA 单位 m²。
 - Scr 使用 mg/dL；若输入 μmol/L，先除以 88.4。
 - Calvert 文献公式：总剂量 mg = AUC × (GFR + 25)，AUC 单位 mg·min/mL。本页实际以取整 CrCl 代入，再把剂量取整；CrCl 与 GFR 不等同。
 - BSA 保留两位使用 JavaScript toFixed(2)，清除率及总剂量取整使用 toFixed(0)。中间舍入属于软件规则，不应理解为文献推荐的临床舍入方法。
-
-### 文献
-
-1. [Mao DQ 等，Basal Energy Expenditure of Chinese Healthy Adults: Comparison of Measured and Predicted Values. 2020;33:566–572](https://www.besjournal.com/article/doi/10.3967/bes2020.075)。正文列出本页成人男女系数，引用 Zhao SS 等的男性研究（Acta Nutrimenta Sinica. 1984;6:87–95）与女性研究（1987;9:200–207）。本次通过 Mao 等文核验系数及引用链，未直接核验这两篇早期全文。
-3. [Cockcroft DW, Gault MH. Prediction of creatinine clearance from serum creatinine. Nephron. 1976;16:31–41](https://pubmed.ncbi.nlm.nih.gov/1244564/)。DOI: 10.1159/000180580。
-4. [Calvert AH 等. Carboplatin dosage: prospective evaluation of a simple formula based on renal function. J Clin Oncol. 1989;7:1748–1756](https://pubmed.ncbi.nlm.nih.gov/2681557/)。DOI: 10.1200/JCO.1989.7.11.1748。该研究不能用于证明以取整 CrCl 替代 GFR 的流程已获验证。
 
 ## 数值验证（2026-11-06）
 
@@ -42,19 +34,6 @@ H 为身高 cm，W 为体重 kg，BSA 单位 m²。
 4. 等待部署完成，使用 Pages 设置页提供的 HTTPS 地址。通常是 `https://你的用户名.github.io/medical-calculators/`，以实际显示为准。
 5. 直达两个工具：在地址末尾加 `#bsa` 或 `#renal`。项目使用相对资源路径，无需修改仓库名前缀。
 6. 更新文件并提交到 main 后会重新发布。若 404，检查分支、根目录入口和 Pages 部署记录。
-
-参考：[GitHub 官方发布源配置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。本交付未登录你的 GitHub、未创建仓库或执行发布。
-
-## 微信公众号接入
-
-这是外部 H5 页面，不是把 JavaScript 嵌进公众号图文，也不是小程序。
-
-- **自定义菜单**：在公众号后台具有“跳转网页”能力的菜单项填写上述 HTTPS 页面地址，保存发布；也可分别填写带 `#bsa`、`#renal` 的链接。实际入口名称及权限以你的公众号后台为准。
-- **图文**：若后台提供“阅读原文”，可填页面地址；正文外链能力依账号权限而异，不能保证所有账号能插入任意外链。也可将正式页面地址制作成二维码放在图文中，并做手机测试。
-- 本项目无登录、微信 SDK、分享定制或支付功能，不需要在前端填写 AppSecret。若以后增加这些功能，需要另行处理对应的权限和域名配置。
-- 普通外链能否在微信打开，仍受公众号权限、微信链接策略及网络可达性影响。GitHub Pages 在目标网络的速度和可达性需实测；不保证微信或大陆网络始终可访问。需要时可用相同静态文件部署到合适的 HTTPS 托管，并按后台实际要求配置域名。
-
-微信[自定义菜单官方文档入口](https://developers.weixin.qq.com/doc/offiaccount/Custom_Menus/Creating_Custom-Defined_Menu.html)本次检索无法读取，因此不宣称已核验你账号的当前菜单/图文权限。
 
 ## 发布前验收
 
